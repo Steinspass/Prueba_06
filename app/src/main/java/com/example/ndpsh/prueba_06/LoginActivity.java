@@ -27,9 +27,12 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        bindUI();
+
         prefs = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
 
-        bindUI();
+        setCredentialsIfExist();
+
         btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,6 +56,15 @@ public class LoginActivity extends AppCompatActivity {
         switchRemember = findViewById(R.id.switchRemenber);
         btnlogin = findViewById(R.id.buttonLogin);
 
+    }
+
+    private void setCredentialsIfExist() {
+        String email = getUserMailPrefs();
+        String password = getUserPassPrefs();
+        if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
+            textEmail.setText(email);
+            textPassword.setText(password);
+        }
     }
 
     private boolean login(String email, String password) {
@@ -88,5 +100,12 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
+    }
+
+    private String getUserMailPrefs(){
+       return prefs.getString("email","");
+    }
+    private String getUserPassPrefs(){
+        return prefs.getString("pass", "");
     }
 }
