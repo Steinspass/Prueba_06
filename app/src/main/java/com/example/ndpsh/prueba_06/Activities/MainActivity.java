@@ -1,4 +1,4 @@
-package com.example.ndpsh.prueba_06;
+package com.example.ndpsh.prueba_06.Activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,6 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.example.ndpsh.prueba_06.Activities.LoginActivity;
+import com.example.ndpsh.prueba_06.R;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.example.ndpsh.prueba_06;
+package com.example.ndpsh.prueba_06.Activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +12,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
+
+import com.example.ndpsh.prueba_06.R;
+import com.example.ndpsh.prueba_06.Utils.Util;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -59,8 +62,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void setCredentialsIfExist() {
-        String email = getUserMailPrefs();
-        String password = getUserPassPrefs();
+        String email = Util.getUserMailPrefs(prefs);
+        String password = Util.getUserPassPrefs(prefs);
         if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
             textEmail.setText(email);
             textPassword.setText(password);
@@ -102,10 +105,5 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private String getUserMailPrefs(){
-       return prefs.getString("email","");
-    }
-    private String getUserPassPrefs(){
-        return prefs.getString("pass", "");
-    }
+
 }
