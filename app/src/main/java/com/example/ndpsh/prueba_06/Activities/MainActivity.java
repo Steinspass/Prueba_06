@@ -10,6 +10,7 @@ import android.view.MenuItem;
 
 import com.example.ndpsh.prueba_06.Activities.LoginActivity;
 import com.example.ndpsh.prueba_06.R;
+import com.example.ndpsh.prueba_06.Utils.Util;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                 logOut();
                 return true;
             case R.id.menu_forget_logout:
-                removeSharedPreferences();
+                Util.RemoveSharedPreferences(prefs);
                 logOut();
                 return true;
             default:
@@ -52,8 +53,4 @@ public class MainActivity extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
-    private void removeSharedPreferences() {
-        prefs.edit().clear().apply();
-    }
-
 }

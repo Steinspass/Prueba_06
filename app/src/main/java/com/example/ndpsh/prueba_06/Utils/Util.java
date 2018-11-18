@@ -10,4 +10,12 @@ public class Util {
     public static String getUserPassPrefs(SharedPreferences preferences) {
         return preferences.getString("pass", "");
     }
+    public static void RemoveSharedPreferences(SharedPreferences preferences) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.remove("email");
+        editor.remove("pass");
+        editor.apply();
+    }
+
+
 }
